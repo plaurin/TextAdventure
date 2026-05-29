@@ -1,4 +1,7 @@
 <Solution>
-  <Folder Name="/SolutionItems/" />
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+  </Folder>
   <Project Path="Console/Console.csproj" Id="c25a512e-98c1-4236-8a81-d34fa7eb58ce" />
+  <Project Path="Navigation/Navigation.csproj" Id="a6bfedfd-ae66-4228-b6b4-32e6f427a79b" />
 </Solution>
