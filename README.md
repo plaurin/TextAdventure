@@ -8,7 +8,7 @@ Old school text adventure game
   - Tomlyn reading
   - Location file format
   - Map viewer
-- Interface : Spector.Console
+- Interface : Spectre.Console
 - RealTime Clock System
 - Combat System
 - Equipment System
