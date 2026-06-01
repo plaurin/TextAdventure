@@ -1,12 +1,12 @@
-[[locations]]
+[[realms]]
 name = "Main"
 coordinates = [0, 0]
-description = "The bustling heart of the city, where people gather around the central fountain to socialize"
+description = "The main realm of the game"
 
-[[locations]]
+[[areas]]
 name = "Main.City"
 coordinates = [0, 0]
-description = "The main area of the city, connecting various districts"
+description = "The main city, connecting various districts"
 
 [[locations]]
 name = "Main.City.CentralFountain"

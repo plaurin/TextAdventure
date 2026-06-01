@@ -16,7 +16,11 @@ namespace UnitTests
         public void Load()
         {
             var repoRoot = GetRepoRoot();
-            var ll = new LocationLoader(Path.Combine(repoRoot, @"GameData\Locations\Main.City.toml"));
+            var ll = LocationLoader.Load(Path.Combine(repoRoot, @"GameData\Locations\Main.City.toml"));
+
+            Assert.Equal(3, ll.Count());
+            Assert.Equal("City", ll.First().Area.Name);
+            Assert.Equal("Main", ll.First().Area.Realm.Name);
             // C:\Users\pasca\Dev\GitHub\TextAdventure\GameData\Locations\test.toml
         }
 
