@@ -2,6 +2,13 @@
 
 Old school text adventure game
 
+## Maps System
+
+- Realm : Scale 100km per point usually for a full country or a plane of existence
+- Area : Scale 1'000m per point usually for a forest, a small mountain, a lake area, etc.
+- Location : Scale 10m per point usually for a city, point of interest and exterior of buildings or dungeons
+- Spot: Scale 1m usually for interor like houses, buildings, dungeons, caves, etc.
+
 ## Todo
 
 - Navigation System
@@ -12,8 +19,8 @@ Old school text adventure game
   x Move to location
   - Map viewer
 - Interface : Spectre.Console
-  - show current location
-  - show available destination
+  x show current location
+  x show available destination
   - move to selection
   - apply move to
   - loop

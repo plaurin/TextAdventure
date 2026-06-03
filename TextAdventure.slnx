@@ -4,6 +4,7 @@
     <File Path="README.md" />
   </Folder>
   <Project Path="Console/Console.csproj" Id="c25a512e-98c1-4236-8a81-d34fa7eb58ce" />
+  <Project Path="Data/Data.csproj" Id="6d6828f1-c636-4da5-8191-33897095bfcd" />
   <Project Path="Navigation/Navigation.csproj" Id="a6bfedfd-ae66-4228-b6b4-32e6f427a79b" />
   <Project Path="UnitTests/UnitTests.csproj" Id="9491de45-f76d-4c7d-bb7d-5abba36cb431" />
 </Solution>

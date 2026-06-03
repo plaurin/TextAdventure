@@ -1,7 +1,8 @@
-﻿using System.Text.Json;
+﻿using Navigation;
+using System.Text.Json;
 using Tomlyn;
 
-namespace Navigation;
+namespace Data;
 
 public class DocumentsLoader
 {
@@ -47,9 +48,10 @@ public class DocumentsLoader
 
         var realmName = segments[0];
         var areaName = segments[1];
+        var locationName = segments[2];
 
         var area = areas.SingleOrDefault(a => a.FullName == $"{realmName}.{areaName}");
-        return new Location(area, areaName);
+        return new Location(area, locationName);
     }
 
     private class DocumentDto
