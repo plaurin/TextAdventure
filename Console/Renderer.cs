@@ -21,6 +21,17 @@ namespace Console
             return locationPanel;
         }
 
+        public static IRenderable RenderActions()
+        {
+            var actionsPanel = new Panel(string.Empty)
+                .Header("Actions")
+                .RoundedBorder()
+                .BorderColor(Color.Red)
+                .Expand();
+
+            return actionsPanel;
+        }
+
         public static IRenderable RenderContent(int iteration)
         {
             var content = new Text($"Iteration {iteration}");
@@ -34,28 +45,20 @@ namespace Console
         public static IRenderable RenderContent(IEnumerable<Location> availableDestinations)
         {
             var table = new Table();
+            table.AddColumn("Key");
             table.AddColumn("Destination");
+            table.AddColumn("Distance");
 
+            int keyIndex = 1;
             foreach (var item in availableDestinations)
             {
-                table.AddRow(item.FullName);
+                table.AddRow(keyIndex++.ToString(), item.FullName, "2m");
             }
 
             return new Panel(table)
                 .RoundedBorder()
                 .BorderColor(Color.Blue)
                 .Expand();
-        }
-
-        public static IRenderable RenderActions()
-        {
-            var actionsPanel = new Panel(string.Empty)
-                .Header("Actions")
-                .RoundedBorder()
-                .BorderColor(Color.Red)
-                .Expand();
-
-            return actionsPanel;
         }
     }
 }

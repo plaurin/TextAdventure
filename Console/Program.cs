@@ -21,9 +21,6 @@ var layout = new Layout("Root")
 AnsiConsole.Live(layout)
     .Start(ctx =>
     {
-
-        int i = 1;
-
         while (true)
         {
             locationLayout.Update(Renderer.RenderLocation(navigation.CurrentLocation.FullName));
@@ -34,5 +31,14 @@ AnsiConsole.Live(layout)
 
             if (readKey?.Key == ConsoleKey.Escape)
                 return;
+
+            if (readKey?.Key == ConsoleKey.D1 && navigation.AvailableDestinations.Count() > 0)
+                navigation.MoveTo(navigation.AvailableDestinations.ElementAt(0));
+
+            if (readKey?.Key == ConsoleKey.D2 && navigation.AvailableDestinations.Count() > 1)
+                navigation.MoveTo(navigation.AvailableDestinations.ElementAt(1));
+
+            if (readKey?.Key == ConsoleKey.D3 && navigation.AvailableDestinations.Count() > 2)
+                navigation.MoveTo(navigation.AvailableDestinations.ElementAt(2));
         }
     });

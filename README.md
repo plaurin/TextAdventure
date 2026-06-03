@@ -17,17 +17,24 @@ Old school text adventure game
   x Current position
   x List of destinations
   x Move to location
+  - Local and Absolute position
+  - Distance to destination
   - Map viewer
 - Interface : Spectre.Console
-  x show current location
-  x show available destination
-  - move to selection
-  - apply move to
-  - loop
+  - Navigation 
+    x show current location
+    x show available destination
+    x move to selection
+    x apply move to
+    x loop
+  - GameState management
+    - Navigation
+    - Main Menu
 - RealTime Clock System
 - Combat System
 - Equipment System
 - Shop System 
+- Quest Journal System
 - Weather System
 - Eating System
 - Rest & sleeping System
