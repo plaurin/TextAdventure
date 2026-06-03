@@ -3,7 +3,7 @@ using Tomlyn;
 
 namespace Navigation;
 
-public class LocationLoader
+public class DocumentsLoader
 {
     public static IEnumerable<Location> Load(string filename)
     {

@@ -7,11 +7,16 @@ Old school text adventure game
 - Navigation System
   x Tomlyn reading
   x Location file format
-  - Current position
-  - List of destinations
-  - Move to location
+  x Current position
+  x List of destinations
+  x Move to location
   - Map viewer
 - Interface : Spectre.Console
+  - show current location
+  - show available destination
+  - move to selection
+  - apply move to
+  - loop
 - RealTime Clock System
 - Combat System
 - Equipment System
