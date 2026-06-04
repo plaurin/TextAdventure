@@ -1,6 +1,7 @@
 ﻿using Navigation;
+using static UnitTests.TestUtilities;
 
-namespace UnitTests;
+namespace UnitTests.Navigation;
 
 public class NavigationSystemTests
 {
@@ -17,13 +18,13 @@ public class NavigationSystemTests
     }
 
     [Fact]
-    public void TestCurrentPosition()
+    public void CurrentPosition()
     {
         Assert.Equal("C", _sut.CurrentLocation.Name);
     }
 
     [Fact]
-    public void TestAvailableDestinations()
+    public void AvailableDestinations()
     {
         Assert.Equal(2, _sut.AvailableDestinations.Count());
         Assert.Equal("D", _sut.AvailableDestinations.ElementAt(0).Name);
@@ -31,7 +32,7 @@ public class NavigationSystemTests
     }
 
     [Fact]
-    public void TestMoveToLocation()
+    public void MoveToLocation()
     {
         _sut.MoveTo(_sut.AvailableDestinations.ElementAt(0)); // D
 
@@ -40,13 +41,5 @@ public class NavigationSystemTests
         Assert.Equal(2, _sut.AvailableDestinations.Count());
         Assert.Equal("C", _sut.AvailableDestinations.ElementAt(0).Name);
         Assert.Equal("E", _sut.AvailableDestinations.ElementAt(1).Name);
-    }
-
-    private static Location CreateLocation(string fullname, int relativeX = 0, int relativeY = 0)
-    {
-        var segments = fullname.Split('.');
-        var realm = new Realm(segments[0]);
-        var aream = new Area(realm, segments[1]);
-        return new Location(aream, segments[2], relativeX, relativeY);
-    }
+    } 
 }
