@@ -22,14 +22,14 @@ public class DocumentsLoader
         return result!.Locations.Select(l => GetLocation(areas, l));
     }
 
-    private static Realm GetRealm(LocationDto realmDto)
+    private static Realm GetRealm(PositionDto realmDto)
     {
         if (realmDto.Name.Split('.').Length != 1) throw new Exception("Should not have . in the name of Realm");
 
-        return new Realm(realmDto.Name);
+        return new Realm(realmDto.Name, realmDto.Coordinates[0], realmDto.Coordinates[1]);
     }
 
-    private static Area GetArea(IEnumerable<Realm> realms, LocationDto areaDto)
+    private static Area GetArea(IEnumerable<Realm> realms, PositionDto areaDto)
     {
         var segments = areaDto.Name.Split('.');
         if (segments.Length != 2) throw new Exception("Should have 1 . in the name of Area (for Realm)");
@@ -38,10 +38,10 @@ public class DocumentsLoader
         var realm = realms.Single(r => r.Name == realmName);
 
         var areaName = segments[1];
-        return new Area(realm, areaName);
+        return new Area(realm, areaName, areaDto.Coordinates[0], areaDto.Coordinates[1]);
     }
 
-    private static Location GetLocation(IEnumerable<Area> areas, LocationDto locationDto)
+    private static Location GetLocation(IEnumerable<Area> areas, PositionDto locationDto)
     {
         var segments = locationDto.Name.Split('.');
         if (segments.Length != 3) throw new Exception("Should have 2 . in the name of Location (for Realm and Area)");
@@ -56,12 +56,12 @@ public class DocumentsLoader
 
     private class DocumentDto
     {
-        public List<LocationDto> Locations { get; set; } = [];
-        public List<LocationDto> Areas { get; set; } = [];
-        public List<LocationDto> Realms { get; set; } = [];
+        public List<PositionDto> Locations { get; set; } = [];
+        public List<PositionDto> Areas { get; set; } = [];
+        public List<PositionDto> Realms { get; set; } = [];
     }
 
-    private class LocationDto
+    private class PositionDto
     {
         public string Name { get; set; } = string.Empty;
         public int[] Coordinates { get; set; } = [];

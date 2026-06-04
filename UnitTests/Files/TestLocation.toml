@@ -10,7 +10,7 @@ description = "The main city, connecting various districts"
 
 [[locations]]
 name = "Main.City.CentralFountain"
-coordinates = [0, 0]
+coordinates = [3, 4]
 description = "A beautiful fountain at the center of the city, surrounded by benches and gardens"
 
 [[locations]]

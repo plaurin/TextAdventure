@@ -24,7 +24,16 @@ public class DocumentsLoaderTests
 
         var weaponShop = locations.Single(l => l.Name == "Inn");
 
+        // Location
         Assert.Equal(-3, weaponShop.RelativeX);
         Assert.Equal(2, weaponShop.RelativeY);
+
+        // Area
+        Assert.Equal(5, weaponShop.Area.RelativeX);
+        Assert.Equal(3, weaponShop.Area.RelativeY);
+
+        // Realm
+        Assert.Equal(1, weaponShop.Area.Realm.RelativeX);
+        Assert.Equal(-1, weaponShop.Area.Realm.RelativeY);
     }
 }
