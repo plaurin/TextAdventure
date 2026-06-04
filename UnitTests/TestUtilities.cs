@@ -8,15 +8,25 @@ public static class TestUtilities
     {
         var segments = fullname.Split('.');
         var realm = new Realm(segments[0], 0, 0);
-        var aream = new Area(realm, segments[1], 0, 0);
-        return new Location(aream, segments[2], relativeX, relativeY);
+        var area = new Area(realm, segments[1], 0, 0);
+        return new Location(area, segments[2], relativeX, relativeY);
+    }
+
+    public static Location CreateLocation(Area area, string name, int relativeX = 0, int relativeY = 0)
+    {
+        return new Location(area, name, relativeX, relativeY);
     }
 
     public static Area CreateArea(string fullname, int relativeX = 0, int relativeY = 0)
     {
         var segments = fullname.Split('.');
-        var realm = new Realm(segments[0], 0, 0);
-        return new Area(realm, segments[1], relativeX, relativeY);
+        var realm = CreateRealm(segments[0]);
+        return CreateArea(realm, segments[1], relativeX, relativeY);
+    }
+
+    public static Area CreateArea(Realm realm, string name, int relativeX = 0, int relativeY = 0)
+    {
+        return new Area(realm, name, relativeX, relativeY);
     }
 
     public static Realm CreateRealm(string name, int relativeX = 0, int relativeY = 0)
