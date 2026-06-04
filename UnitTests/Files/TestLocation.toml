@@ -1,0 +1,24 @@
+[[realms]]
+name = "Main"
+coordinates = [1, -1]
+description = "The main realm of the game"
+
+[[areas]]
+name = "Main.City"
+coordinates = [5, 3]
+description = "The main city, connecting various districts"
+
+[[locations]]
+name = "Main.City.CentralFountain"
+coordinates = [0, 0]
+description = "A beautiful fountain at the center of the city, surrounded by benches and gardens"
+
+[[locations]]
+name = "Main.City.WeaponShop"
+coordinates = [2, 2]
+description = "A shop that sells various weapons and armor for adventurers"
+
+[[locations]]
+name = "Main.City.Inn"
+coordinates = [-3, 2]
+description = "A cozy inn where travelers can rest and find information about the city"

@@ -35,7 +35,7 @@ public class DocumentsLoader
         if (segments.Length != 2) throw new Exception("Should have 1 . in the name of Area (for Realm)");
 
         var realmName = segments[0];
-        var realm = realms.SingleOrDefault(r => r.Name == realmName);
+        var realm = realms.Single(r => r.Name == realmName);
 
         var areaName = segments[1];
         return new Area(realm, areaName);
@@ -50,8 +50,8 @@ public class DocumentsLoader
         var areaName = segments[1];
         var locationName = segments[2];
 
-        var area = areas.SingleOrDefault(a => a.FullName == $"{realmName}.{areaName}");
-        return new Location(area, locationName);
+        var area = areas.Single(a => a.FullName == $"{realmName}.{areaName}");
+        return new Location(area, locationName, locationDto.Coordinates[0], locationDto.Coordinates[1]);
     }
 
     private class DocumentDto
