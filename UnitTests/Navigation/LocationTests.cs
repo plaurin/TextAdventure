@@ -31,4 +31,22 @@ public class LocationTests
         Assert.Equal(expectedX, location.AbsoluteXInMeter);
         Assert.Equal(expectedY, location.AbsoluteYInMeter);
     }
+
+    [Theory]
+    [InlineData(0, 0, 0, 0, 0)]
+    [InlineData(0, 1, 0, 0, 10)]
+    [InlineData(1, 0, 0, 0, 10)]
+    [InlineData(0, 0, 1, 0, 10)]
+    [InlineData(0, 0, 0, 1, 10)]
+    [InlineData(0, 0, 0, 15, 150)]
+    [InlineData(3, 4, 0, 0, 50)]
+    [InlineData(0, 0, 3, 4, 50)]
+    [InlineData(10, 10, 13, 14, 50)]
+    public void DistanceToAnotherLocation(int location1X, int location1Y, int location2X, int location2Y, double expectedDistance)
+    {
+        var location1 = CreateLocation("A.B.C", location1X, location1Y);
+        var location2 = CreateLocation("A.B.D", location2X, location2Y);
+
+        Assert.Equal(expectedDistance, location1.DistanceTo(location2));
+    }
 }

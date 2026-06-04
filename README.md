@@ -19,8 +19,8 @@ Relative coordinates at scale but Absolute coordinates in meters
   x Current position
   x List of destinations
   x Move to location
-  - Local and Absolute position
-  - Distance to destination
+  x Local and Absolute position
+  x Distance to destination
   - Map viewer
 - Interface : Spectre.Console
   - Navigation 
