@@ -24,7 +24,7 @@ AnsiConsole.Live(layout)
         while (true)
         {
             locationLayout.Update(Renderer.RenderLocation(navigation.CurrentLocation.FullName));
-            contentLayout.Update(Renderer.RenderContent(navigation.AvailableDestinations));
+            contentLayout.Update(Renderer.RenderContent(navigation.CurrentLocation, navigation.AvailableDestinations));
 
             ctx.Refresh();
             var readKey = AnsiConsole.Console.Input.ReadKey(true);

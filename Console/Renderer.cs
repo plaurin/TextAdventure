@@ -42,7 +42,7 @@ namespace Console
                 .Expand();
         }
 
-        public static IRenderable RenderContent(IEnumerable<Location> availableDestinations)
+        public static IRenderable RenderContent(Location currentLocation, IEnumerable<Location> availableDestinations)
         {
             var table = new Table();
             table.AddColumn("Key");
@@ -52,7 +52,7 @@ namespace Console
             int keyIndex = 1;
             foreach (var item in availableDestinations)
             {
-                table.AddRow(keyIndex++.ToString(), item.FullName, "2m");
+                table.AddRow(keyIndex++.ToString(), item.Name, $"{item.DistanceTo(currentLocation):0}m" );
             }
 
             return new Panel(table)
