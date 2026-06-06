@@ -1,4 +1,5 @@
 ﻿using Console;
+using Console.States;
 using Data;
 using Navigation;
 using Spectre.Console;
@@ -18,27 +19,24 @@ var layout = new Layout("Root")
         contentLayout,
         actionsLayout);
 
+var gameState = new GameState(navigation, locationLayout, contentLayout, actionsLayout);
+
 AnsiConsole.Live(layout)
     .Start(ctx =>
     {
         while (true)
         {
-            locationLayout.Update(Renderer.RenderLocation(navigation.CurrentLocation.FullName));
-            contentLayout.Update(Renderer.RenderContent(navigation.CurrentLocation, navigation.AvailableDestinations));
-
+            gameState.UpdateUI();
             ctx.Refresh();
+
             var readKey = AnsiConsole.Console.Input.ReadKey(true);
 
-            if (readKey?.Key == ConsoleKey.Escape)
+            if (readKey.HasValue)
+            {
+                gameState.ProcessPlayerInput(readKey.Value);
+            }
+
+            if (gameState.ShouldExit)
                 return;
-
-            if (readKey?.Key == ConsoleKey.D1 && navigation.AvailableDestinations.Count() > 0)
-                navigation.MoveTo(navigation.AvailableDestinations.ElementAt(0));
-
-            if (readKey?.Key == ConsoleKey.D2 && navigation.AvailableDestinations.Count() > 1)
-                navigation.MoveTo(navigation.AvailableDestinations.ElementAt(1));
-
-            if (readKey?.Key == ConsoleKey.D3 && navigation.AvailableDestinations.Count() > 2)
-                navigation.MoveTo(navigation.AvailableDestinations.ElementAt(2));
         }
     });
