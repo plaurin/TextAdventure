@@ -4,16 +4,18 @@ namespace Console.States;
 
 public abstract class GameStateBase
 {
-    protected GameStateBase(Layout locationLayout, Layout contentLayout, Layout actionsLayout)
+    protected GameStateBase(ConsoleLayouts layouts)
     {
-        LocationLayout = locationLayout;
-        ContentLayout = contentLayout;
-        ActionsLayout = actionsLayout;
+        LocationLayout = layouts.LocationLayout;
+        ContentLayout = layouts.ContentLayout;
+        ActionsLayout = layouts.ActionsLayout;
+        StatusLayout = layouts.StatusLayout;
     }
 
     protected Layout LocationLayout { get; }
     protected Layout ContentLayout { get; }
     protected Layout ActionsLayout { get; }
+    protected Layout StatusLayout { get; }
 
     public abstract void UpdateUI();
 

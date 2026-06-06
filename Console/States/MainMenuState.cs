@@ -7,8 +7,8 @@ public class MainMenuState : GameStateBase
     private readonly IPopupMenu _popupMenu;
     private readonly IExitGame _exitGame;
 
-    public MainMenuState(IPopupMenu popupMenu, IExitGame exitGame, Layout locationLayout, Layout contentLayout, Layout actionsLayout)
-        : base(locationLayout, contentLayout, actionsLayout)
+    public MainMenuState(IPopupMenu popupMenu, IExitGame exitGame, ConsoleLayouts layouts)
+        : base(layouts)
     {
         _popupMenu = popupMenu;
         _exitGame = exitGame;

@@ -1,5 +1,5 @@
 ﻿using Navigation;
-using Spectre.Console;
+using Time;
 
 namespace Console.States;
 
@@ -11,10 +11,10 @@ public class GameState : IExitGame, IPopupMenu
     private readonly NavigationState _navigationState;
     private readonly MainMenuState _menuState;
 
-    public GameState(NavigationSystem navigation, Layout locationLayout, Layout contentLayout, Layout actionsLayout)
+    public GameState(ConsoleLayouts layouts, NavigationSystem navigation, RealTimeSystem realTime)
     {
-        _navigationState = new NavigationState(navigation, locationLayout, contentLayout, actionsLayout);
-        _menuState = new MainMenuState(this, this, locationLayout, contentLayout, actionsLayout);
+        _navigationState = new NavigationState(navigation, realTime, layouts);
+        _menuState = new MainMenuState(this, this, layouts);
 
         _currentGameState = _navigationState;
     }

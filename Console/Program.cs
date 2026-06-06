@@ -1,27 +1,36 @@
-﻿using Console;
-using Console.States;
+﻿using Console.States;
 using Data;
 using Navigation;
 using Spectre.Console;
+using Time;
 
 var repoRoot = PathUtilities.GetRepoRoot();
 var docs = DocumentsLoader.Load(Path.Combine(repoRoot, @"GameData\Locations\Main.City.toml"));
 
 var navigation = new NavigationSystem(docs, docs.First());
+var realTime = new RealTimeSystem();
 
 var locationLayout = new Layout().Size(3);
 var contentLayout = new Layout();
-var actionsLayout = new Layout(Renderer.RenderActions()).Size(3);
+var actionsLayout = new Layout().Size(3);
+var statusLayout = new Layout().Size(20);
 
-var layout = new Layout("Root")
+var rootLayout = new Layout("Root")
     .SplitRows(
-        locationLayout,
-        contentLayout,
+        new Layout("Top")
+            .SplitColumns(
+                new Layout("Left")
+                    .SplitRows(
+                        locationLayout,
+                        contentLayout),
+                statusLayout),
         actionsLayout);
 
-var gameState = new GameState(navigation, locationLayout, contentLayout, actionsLayout);
+var layouts = new ConsoleLayouts(locationLayout, contentLayout, actionsLayout, statusLayout);
 
-AnsiConsole.Live(layout)
+var gameState = new GameState(layouts, navigation, realTime);
+
+AnsiConsole.Live(rootLayout)
     .Start(ctx =>
     {
         while (true)

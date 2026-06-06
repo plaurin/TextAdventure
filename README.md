@@ -23,16 +23,18 @@ Relative coordinates at scale but Absolute coordinates in meters
   x Distance to destination
   - Map viewer
 - Interface : Spectre.Console
-  - Navigation 
+  x Navigation 
     x show current location
     x show available destination
     x move to selection
     x apply move to
     x loop
-  - GameState management
-    - Navigation
-    - Main Menu
+  x GameState management
+    x Navigation
+    x Main Menu
 - RealTime Clock System
+  x Real Time increment
+  - Add time on navigation
 - Combat System
 - Equipment System
 - Shop System 

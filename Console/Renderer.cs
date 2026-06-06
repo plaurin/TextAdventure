@@ -1,6 +1,7 @@
 ﻿using Navigation;
 using Spectre.Console;
 using Spectre.Console.Rendering;
+using Time;
 
 namespace Console
 {
@@ -59,6 +60,14 @@ namespace Console
                 .RoundedBorder()
                 .BorderColor(Color.Blue)
                 .Expand();
+        }
+
+        public static IRenderable RenderStatus(RealTimeSystem realTime)
+        {
+            var rows = new Rows(
+                new Text($"{realTime.GameTime:hh}:{realTime.GameTime:mm}:{realTime.GameTime:ss}"));
+
+            return new Panel(rows);
         }
     }
 }

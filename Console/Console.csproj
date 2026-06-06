@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj" />
     <ProjectReference Include="..\Navigation\Navigation.csproj" />
+    <ProjectReference Include="..\Time\Time.csproj" />
   </ItemGroup>
 
 </Project>
