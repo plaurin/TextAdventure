@@ -29,12 +29,14 @@ Relative coordinates at scale but Absolute coordinates in meters
     x move to selection
     x apply move to
     x loop
+    - navigation speed
   x GameState management
     x Navigation
     x Main Menu
 - RealTime Clock System
   x Real Time increment
-  - Add time on navigation
+  x Add time on navigation
+  x Days and calendar
 - Combat System
 - Equipment System
 - Shop System 

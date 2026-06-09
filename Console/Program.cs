@@ -7,8 +7,8 @@ using Time;
 var repoRoot = PathUtilities.GetRepoRoot();
 var docs = DocumentsLoader.Load(Path.Combine(repoRoot, @"GameData\Locations\Main.City.toml"));
 
-var navigation = new NavigationSystem(docs, docs.First());
 var realTime = new RealTimeSystem();
+var navigation = new NavigationSystem(docs, docs.First(), realTime);
 
 var locationLayout = new Layout().Size(3);
 var contentLayout = new Layout();

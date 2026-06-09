@@ -67,7 +67,9 @@ namespace Console
             var rows = new Rows(
                 new Text($"{realTime.GameTime:hh}:{realTime.GameTime:mm}:{realTime.GameTime:ss}"));
 
-            return new Panel(rows);
+            return new Panel(rows)
+                .BorderColor(Color.Yellow)
+                .Expand();
         }
     }
 }

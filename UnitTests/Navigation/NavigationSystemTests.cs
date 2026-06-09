@@ -1,4 +1,5 @@
 ﻿using Navigation;
+using Time;
 using static UnitTests.TestUtilities;
 
 namespace UnitTests.Navigation;
@@ -14,7 +15,7 @@ public class NavigationSystemTests
         var l3 = CreateLocation("A.B.E");
         var locations = new List<Location>() { l1, l2, l3 };
 
-        _sut = new NavigationSystem(locations, l1);
+        _sut = new NavigationSystem(locations, l1, new RealTimeSystem());
     }
 
     [Fact]
