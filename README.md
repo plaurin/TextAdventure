@@ -15,13 +15,16 @@ Relative coordinates at scale but Absolute coordinates in meters
 
 - Navigation System
   x Tomlyn reading
-  x Location file format
-  x Current position
-  x List of destinations
-  x Move to location
-  x Local and Absolute position
-  x Distance to destination
-  - Map viewer
+  x location file format
+  x current position
+  x list of destinations
+  x move to location
+  x local and Absolute position
+  x distance to destination
+  - map viewer
+  x navigation speed
+  - terrain effect
+  - mount
 - Interface : Spectre.Console
   x Navigation 
     x show current location
@@ -29,7 +32,6 @@ Relative coordinates at scale but Absolute coordinates in meters
     x move to selection
     x apply move to
     x loop
-    - navigation speed
   x GameState management
     x Navigation
     x Main Menu
