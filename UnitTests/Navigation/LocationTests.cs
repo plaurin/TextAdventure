@@ -49,4 +49,15 @@ public class LocationTests
 
         Assert.Equal(expectedDistance, location1.DistanceTo(location2));
     }
+
+    [Theory]
+    [InlineData("A.B.C", "A - B - C")]
+    [InlineData("A.B.CenterTown", "A - B - Center Town")]
+    [InlineData("TheRealm.TheArea.TheLocation", "The Realm - The Area - The Location")]
+    public void Humanize(string fullLocation, string expectedHumanizedName)
+    {
+        var location = CreateLocation(fullLocation);
+
+        Assert.Equal(expectedHumanizedName, location.HumanizedName);
+    }
 }

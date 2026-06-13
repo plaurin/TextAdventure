@@ -13,7 +13,7 @@ var navigation = new NavigationSystem(docs, docs.First(), realTime);
 var locationLayout = new Layout().Size(3);
 var contentLayout = new Layout();
 var actionsLayout = new Layout().Size(3);
-var statusLayout = new Layout().Size(20);
+var statusLayout = new Layout().Size(22);
 
 var rootLayout = new Layout("Root")
     .SplitRows(

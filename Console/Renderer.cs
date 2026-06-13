@@ -7,11 +7,9 @@ namespace Console
 {
     public static class Renderer
     {
-        public static IRenderable RenderLocation(string? currentLocation = null)
+        public static IRenderable RenderLocation(Location currentLocation)
         {
-            currentLocation ??= "No location";
-
-            var content = new Text(currentLocation);
+            var content = new Text(currentLocation.HumanizedName);
 
             var locationPanel = new Panel(content)
                 .Header("Location")
@@ -65,7 +63,8 @@ namespace Console
         public static IRenderable RenderStatus(RealTimeSystem realTime)
         {
             var rows = new Rows(
-                new Text($"{realTime.GameTime:hh}:{realTime.GameTime:mm}:{realTime.GameTime:ss}"));
+                new Text(realTime.HumanizedDate),
+                new Text(realTime.HumanizedTime));
 
             return new Panel(rows)
                 .BorderColor(Color.Yellow)

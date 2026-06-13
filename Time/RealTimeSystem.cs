@@ -30,6 +30,16 @@
         public int GameMonth => (GameTime.Days / _daysPerMonth) % _monthsOfYear.Length + 1;
         public int GameDay => GameTime.Days % _daysPerMonth + 1;
 
+        public string HumanizedTime => $"{GameTime:hh}:{GameTime:mm}:{GameTime:ss}";
+        public string HumanizedDate => $"{GameDayOfWeek}, {GameMonthOfYear} {HumanizedDay}, {GameYear}";
+        private string HumanizedDay => GameDay == 1
+            ? "1st"
+            : GameDay == 2
+                ? "2nd"
+                : GameDay == 3
+                    ? "3rd"
+                    : $"{GameDay}th";
+
         public int MonthsPerYear => _monthsOfYear.Length;
         public int DaysPerWeek => _daysOfWeek.Length;
         public int DaysPerMonth => _daysPerMonth;
@@ -52,7 +62,6 @@
             var index = _daysOfWeek.IndexOf(dayOfWeek);
             if (index == -1) throw new ArgumentOutOfRangeException(nameof(dayOfWeek), $"{dayOfWeek} not a day of week");
 
-            //_gameStartDayOfWeek = (int)((DaysPerWeek + _gameStartDay - index - 1) % DaysPerWeek);
             _gameStartDayOfWeek = (int)((DaysPerWeek + index - _gameStartDay) % DaysPerWeek);
         }
 

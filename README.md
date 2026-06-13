@@ -41,7 +41,7 @@ Relative coordinates at scale but Absolute coordinates in meters
   x Days and calendar
 - Combat System
 - Equipment System
-- Shop System 
+- Shop System
 - Quest Journal System
 - Weather System
 - Eating System

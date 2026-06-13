@@ -4,6 +4,13 @@ namespace UnitTests.RealTime;
 
 public class RealTimeSystemTests
 {
+    private RealTimeSystem _sut;
+
+    public RealTimeSystemTests()
+    {
+        _sut = new RealTimeSystem();
+    }
+
     [Theory]
     [InlineData(0, "A")]
     [InlineData(1, "B")]
@@ -14,12 +21,10 @@ public class RealTimeSystemTests
     [InlineData(999998, "D")]
     public void DaysOfWeek(int daysToAdd, string expectedDay)
     {
-        var sut = new RealTimeSystem();
+        _sut.SetDaysOfWeek("A", "B", "C", "D", "E");
+        _sut.AddTime(TimeSpan.FromDays(daysToAdd));
 
-        sut.SetDaysOfWeek("A", "B", "C", "D", "E");
-        sut.AddTime(TimeSpan.FromDays(daysToAdd));
-
-        Assert.Equal(expectedDay, sut.GameDayOfWeek);
+        Assert.Equal(expectedDay, _sut.GameDayOfWeek);
     }
 
     [Theory]
@@ -34,13 +39,11 @@ public class RealTimeSystemTests
     {
         const int DaysPerMonth = 10;
 
-        var sut = new RealTimeSystem();
+        _sut.SetMonthsOfYear("1", "2", "3", "4", "5", "6");
+        _sut.SetDaysPerMonth(DaysPerMonth);
+        _sut.AddTime(TimeSpan.FromDays(monthsToAdd * DaysPerMonth));
 
-        sut.SetMonthsOfYear("1", "2", "3", "4", "5", "6");
-        sut.SetDaysPerMonth(DaysPerMonth);
-        sut.AddTime(TimeSpan.FromDays(monthsToAdd * DaysPerMonth));
-
-        Assert.Equal(expectedMonth, sut.GameMonthOfYear);
+        Assert.Equal(expectedMonth, _sut.GameMonthOfYear);
     }
 
     [Theory]
@@ -55,12 +58,10 @@ public class RealTimeSystemTests
     [InlineData(11, 11, 1)]
     public void DaysOfMonth(int daysPerMonth, int daysToAdd, int expectedDayOfMonth)
     {
-        var sut = new RealTimeSystem();
+        _sut.SetDaysPerMonth(daysPerMonth);
+        _sut.AddTime(TimeSpan.FromDays(daysToAdd));
 
-        sut.SetDaysPerMonth(daysPerMonth);
-        sut.AddTime(TimeSpan.FromDays(daysToAdd));
-
-        Assert.Equal(expectedDayOfMonth, sut.GameDay);
+        Assert.Equal(expectedDayOfMonth, _sut.GameDay);
     }
 
     [Theory]
@@ -83,13 +84,11 @@ public class RealTimeSystemTests
     [InlineData(9999, 12, 30, 1, 10000, 1, 1)]
     public void SetGameStartTimeTestYearMonthDay(int year, int month, int day, int daysToAdd, int expectedYear, int expectedMonth, int expectedDay)
     {
-        var sut = new RealTimeSystem();
-
-        sut.SetGameStartTime(year, month, day, "MON");
-        sut.AddTime(TimeSpan.FromDays(daysToAdd));
+        _sut.SetGameStartTime(year, month, day, "MON");
+        _sut.AddTime(TimeSpan.FromDays(daysToAdd));
 
         var expected = $"Year {expectedYear} Month {expectedMonth} Day {expectedDay}";
-        var actual = $"Year {sut.GameYear} Month {sut.GameMonth} Day {sut.GameDay}";
+        var actual = $"Year {_sut.GameYear} Month {_sut.GameMonth} Day {_sut.GameDay}";
 
         Assert.Equal(expected, actual);
     }
@@ -107,12 +106,23 @@ public class RealTimeSystemTests
     [InlineData(9, 8, 7, "SAT", 3, "TUE")]
     public void SetGameStartTimeTestDayOfWeek(int year, int month, int day, string dayOfWeek, int daysToAdd, string expectedDayOfWeek)
     {
-        var sut = new RealTimeSystem();
+        _sut.SetGameStartTime(year, month, day, dayOfWeek);
+        _sut.AddTime(TimeSpan.FromDays(daysToAdd));
 
-        sut.SetGameStartTime(year, month, day, dayOfWeek);
-        sut.AddTime(TimeSpan.FromDays(daysToAdd));
-
-        Assert.Equal(expectedDayOfWeek, sut.GameDayOfWeek);
+        Assert.Equal(expectedDayOfWeek, _sut.GameDayOfWeek);
     }
 
+    [Theory]
+    [InlineData(0, 1, 1, "MON", "MON, JAN 1st, 0")]
+    [InlineData(1234, 1, 1, "TUE", "TUE, JAN 1st, 1234")]
+    [InlineData(2345, 12, 2, "WED", "WED, DEC 2nd, 2345")]
+    [InlineData(3456, 1, 3, "THU", "THU, JAN 3rd, 3456")]
+    [InlineData(987, 10, 4, "FRI", "FRI, OCT 4th, 987")]
+    [InlineData(87, 9, 30, "SAT", "SAT, SEP 30th, 87")]
+    public void HumanizeDate(int year, int month, int day, string dayOfWeek, string expectedHumanized)
+    {
+        _sut.SetGameStartTime(year, month, day, dayOfWeek);
+
+        Assert.Equal(expectedHumanized, _sut.HumanizedDate);
+    }
 }

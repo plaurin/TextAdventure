@@ -22,7 +22,7 @@ public class NavigationState : GameStateBase
         ContentLayout.IsVisible = true;
         ActionsLayout.IsVisible = true;
 
-        LocationLayout.Update(Renderer.RenderLocation(_navigation.CurrentLocation.FullName));
+        LocationLayout.Update(Renderer.RenderLocation(_navigation.CurrentLocation));
         ContentLayout.Update(Renderer.RenderContent(_navigation.CurrentLocation, _navigation.AvailableDestinations));
         StatusLayout.Update(Renderer.RenderStatus(_realTime));
     }
